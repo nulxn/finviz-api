@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        ::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+        }
+
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      input,
+      button {
+        background-color: #333;
+        color: #e0e0e0;
+        border: 1px solid #444;
+        padding: 10px;
+        margin: 5px 0;
+      }
+
+      button:hover {
+        background-color: #444;
+      }
+
+      canvas {
+        background-color: #1e1e1e;
+        border: 1px solid #444;
+      }
+    </style>
+    <title>Graph Test</title>
+  </head>
+  <body>
+    <h1>Graphing Test</h1>
+
+    <input type="text" id="ticker" placeholder="Enter a stock ticker" />
+    <button id="submit">Submit</button>
+    <p id="status"></p>
+    <br />
+    <canvas id="graph" width="400" height="400"></canvas>
+
+    <script>
+      console.clear();
+      let module = {};
+    </script>
+    <script src="../index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer>
+      document.querySelector("#submit").onclick = () => {
+        let ticker = document.querySelector("#ticker").value;
+        module.exports.quote(ticker, "stock", {}, true).then((data) => {
+          if (data.status.http_code === 200) {
+            document.querySelector("#status").innerText = "Success";
+            let contents = JSON.parse(data.contents);
+
+            console.log(contents);
+            new Chart(document.querySelector("#graph").getContext("2d"), {
+              type: "line",
+              data: {
+                labels: contents.date.map(
+                  (timestamp) => new Date(timestamp * 1000)
+                ),
+                datasets: [
+                  {
+                    label: "Price",
+                    data: contents.close,
+                    borderColor: "#e0e0e0",
+                    backgroundColor: "#333",
+                    fill: false,
+                  },
+                ],
+              },
+              options: {
+                scales: {
+                  x: {
+                    ticks: {
+                      color: "#e0e0e0",
+                    },
+                    grid: {
+                      color: "#444",
+                    },
+                  },
+                  y: {
+                    ticks: {
+                      color: "#e0e0e0",
+                    },
+                    grid: {
+                      color: "#444",
+                    },
+                  },
+                },
+              },
+            });
+          } else {
+            document.querySelector("#status").innerText = "Failed";
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

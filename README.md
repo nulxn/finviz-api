@@ -5,17 +5,17 @@ An API wrapper for FinViz
 ## Functions
 
 <dl>
-<dt><a href="#statement">statement(ticker, [params])</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
+<dt><a href="#statement">statement(ticker, [params], [corsBypass])</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Get financial statement data for a stock</p>
 </dd>
-<dt><a href="#quote">quote(ticker, [instrument], [params])</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
+<dt><a href="#quote">quote(ticker, [instrument], [params], [corsBypass])</a> ⇒ <code>Promise.&lt;Object&gt;</code></dt>
 <dd><p>Get quote data for a stock or cryptocurrency</p>
 </dd>
 </dl>
 
 <a name="statement"></a>
 
-### statement(ticker, [params]) ⇒ <code>Promise.&lt;Object&gt;</code>
+### statement(ticker, [params], [corsBypass]) ⇒ <code>Promise.&lt;Object&gt;</code>
 Get financial statement data for a stock
 
 **Kind**: global function  
@@ -24,11 +24,12 @@ Get financial statement data for a stock
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | ticker | <code>string</code> |  | Stock ticker |
-| [params] | <code>Object</code> | <code>{mode: &quot;no-cors&quot;}</code> | Fetch API options |
+| [params] | <code>Object</code> | <code>{}</code> | Fetch API options |
+| [corsBypass] | <code>boolean</code> | <code>false</code> | Attempt to bypass CORS (allOrigins) |
 
 <a name="quote"></a>
 
-### quote(ticker, [instrument], [params]) ⇒ <code>Promise.&lt;Object&gt;</code>
+### quote(ticker, [instrument], [params], [corsBypass]) ⇒ <code>Promise.&lt;Object&gt;</code>
 Get quote data for a stock or cryptocurrency
 
 **Kind**: global function  
@@ -38,7 +39,8 @@ Get quote data for a stock or cryptocurrency
 | --- | --- | --- | --- |
 | ticker | <code>string</code> |  | Stock/Crypto ticker |
 | [instrument] | <code>string</code> | <code>&quot;stock&quot;</code> | Instrument type (stock[default] or crypto) |
-| [params] | <code>Object</code> | <code>{mode: &quot;no-cors&quot;}</code> | Fetch API options |
+| [params] | <code>Object</code> | <code>{}</code> | Fetch API options |
+| [corsBypass] | <code>boolean</code> | <code>false</code> | Attempt to bypass CORS (allOrigins) |
 
 
 

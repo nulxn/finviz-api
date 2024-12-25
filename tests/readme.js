@@ -1,5 +1,5 @@
 const fs = require("fs");
-const path = require("path");//commit
+const path = require("path");
 const jsdoc2md = require("jsdoc-to-markdown");
 
 (async () => {
