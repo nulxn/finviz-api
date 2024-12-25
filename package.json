@@ -1,0 +1,14 @@
+{
+  "name": "finviz-api",
+  "version": "1.0.0",
+  "description": "An API Wrapper/Scrapper for FinViz",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/index.js"
+  },
+  "author": "nulxn",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdoc-to-markdown": "^9.1.1"
+  }
+}
