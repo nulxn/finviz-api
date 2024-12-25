@@ -1,7 +1,5 @@
 # finviz-api
 
-An API wrapper for FinViz
-
 ## Functions
 
 <dl>
@@ -40,3 +38,10 @@ Get quote data for a stock or cryptocurrency
 | ticker       | <code>string</code> |                                | Stock/Crypto ticker                        |
 | [instrument] | <code>string</code> | <code>&quot;stock&quot;</code> | Instrument type (stock[default] or crypto) |
 
+## Developer Deps
+
+- [jsdoc-to-markdown](https://www.npmjs.com/package/jsdoc-to-markdown)
+
+---
+
+© 2024 nulxn
